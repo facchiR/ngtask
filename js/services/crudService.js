@@ -1,6 +1,6 @@
 app.service('crudService', function($http, limitToFilter) {
 	// ref.: http://docs.couchdb.org/en/2.0.0/http-api.html
-	var S='http://localhost:5984/ngschool/';
+	var S='http://localhost:5984/tasksfacchi/';
     var onError = function(response){
         console.log("Errore di chiamata: ", response)
 	};

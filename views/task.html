@@ -1,0 +1,38 @@
+<h2>ToDo Things</h2>
+<section ng-if="!id">
+	<h1>
+	   ToDo Things <a class="btn btn-success" href="#/task/new"><i class="fa fa-file-o"></i> New Task</a>
+	</h1>
+        
+            <ul>
+                    <li ng-repeat="d in data | orderBy:'d.before'">
+                            <a ng-href="#/task/{{d._id}}">{{d.todo|uppercase}} {{d.before|date : format : "fullDate" }}</a>
+                    </li>
+            </ul>
+        
+</section>
+
+<section ng-if="id">
+	<h1>
+	   {{d.todo|uppercase}} {{d.before|date : format : "fullDate"}} <span ng-hide="d.todo">New Task</span>
+	</h1>
+	<form ng-submit="save()" class="well">
+		<p class="form-group">
+			<label>ToDo </label>
+			<input class="form-control" ng-model="d.todo" autofocus required/>
+			<label>Before </label>
+                        <input type="date" class="form-control" ng-model="d.before" />
+		</p>
+			<button type="submit" class="btn btn-primary"  data-toggle="tooltip" data-placement="bottom" title="Salva"><i class="fa fa-save"></i> Save </button>
+			<a accesskey="n" class="btn btn-success" href="#/task/new"><i class="fa fa-file-o"></i> New </a>
+			<a accesskey="l" class="btn btn-default" href="#/task"><i class="fa fa-table"></i> All Tasks </a>
+			<a accesskey="x" class="btn btn-danger" ng-click="remove()"><i class="fa fa-trash"></i> REMOVE </a>
+	</form>
+	<h3>To Do Things
+	   <span style="zoom:75%" class="pull-right">
+		<button ng-click="createEmail()" class="btn btn-small btn-success"><i class="fa fa-file-o"></i></button>
+		<button ng-click="removeEmail()" class="btn btn-small btn-danger" ><i class="fa fa-trash-o"></i></button>
+	   </span>
+	</h3>
+   <!-- <div id="gridTodo" ui-grid="gridTodoOptions" class="grd" ui-grid-edit ui-grid-cellNav ui-grid-row-edit ui-grid-selection></div>-->
+</section>

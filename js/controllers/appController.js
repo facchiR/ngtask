@@ -10,6 +10,9 @@ app.controller('AppController', ['swInfo', function( swInfo ) {
        },{
         url:"#/opzioni",
         title:"Opzioni"
+       },{
+        url:"#/task",
+        title:"ToDo"
        }
     ];
     vm.ver = swInfo.version;

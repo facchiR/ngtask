@@ -1,4 +1,5 @@
-app.controller('OpzioniController', ['$scope', 'crudService','$routeParams','$http','$q','$interval','uiGridConstants', function($scope, crudService,$routeParams,$http,$q,$interval,uiGridConstants) {
+app.controller('OpzioniController', ['$scope', 'crudService','$routeParams','$http','$q','$interval','uiGridConstants', 
+            function($scope, crudService,$routeParams,$http,$q,$interval,uiGridConstants) {
 	var vm = $scope;
 	window.vm=vm;
 	vm.cat=$routeParams && $routeParams.opz || 'classi';
@@ -13,10 +14,10 @@ app.controller('OpzioniController', ['$scope', 'crudService','$routeParams','$ht
 			vm.gridApi = gridApi;
 			gridApi.rowEdit.on.saveRow(vm, vm.save);
 		}		
-	}
+	};
     vm.populateData = function(response){
         vm.data = response.data && response.data.docs ||[];
-		vm.gridOptions.data=vm.data
+		vm.gridOptions.data=vm.data;
 		
 		switch (true){
 			case (vm.cat=='persone'):
@@ -44,6 +45,12 @@ app.controller('OpzioniController', ['$scope', 'crudService','$routeParams','$ht
 					{ name: 'dal',type:'date',width:130,cellFilter: 'date:"dd/MM/yyyy"'},
 					{ name: 'al',type:'date',width:130,cellFilter: 'date:"dd/MM/yyyy"'}
 				];
+				break;				
+			case (vm.cat=='task'):
+				vm.gridOptions.columnDefs=[
+					{ name: 'todo',displayName:'ToDo'},
+					{ name: 'before',type:'date',width:130,cellFilter: 'date:"dd/MM/yyyy"'}
+                                    ];
 				break;				
 		}
 		

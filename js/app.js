@@ -1,4 +1,4 @@
-var app = angular.module('ngschool', ['ngRoute','ui.grid','ui.grid.edit', 'ui.grid.rowEdit', 'ui.grid.cellNav','ui.grid.selection']);
+var app = angular.module('ngtask', ['ngRoute','ui.grid','ui.grid.edit', 'ui.grid.rowEdit', 'ui.grid.cellNav','ui.grid.selection']);
 app.conf=function ($routeProvider) { 
   $routeProvider 
     .when('/', { 
@@ -19,7 +19,15 @@ app.conf=function ($routeProvider) {
     .when('/opzioni/:opz', { 
       controller: 'OpzioniController', 
       templateUrl: 'views/opzioni.html' 
-    })	
+    })
+     .when('/task', { 
+      controller: 'TaskController', 
+      templateUrl: 'views/task.html' 
+    })
+    .when('/task/:id', { 
+      controller: 'TaskController', 
+      templateUrl: 'views/task.html' 
+    }) 
     .otherwise({ 
       redirectTo: '/' 
     }); 
